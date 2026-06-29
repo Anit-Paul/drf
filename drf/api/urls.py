@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
     path('student/', views.studentAPI,name='studentAPI'),
     path('student/<int:pk>/', views.studentIDAPI,name='studentidAPI'),
+    path('employee/', views.EmployeeView.as_view(),name='employee'),
 ]
