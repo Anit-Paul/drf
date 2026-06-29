@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #custom apps
     'myapp',
     'api',
+    'employee',
     #rest framework
     "rest_framework",
 ]
