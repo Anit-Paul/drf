@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'myapp',
     'api',
     'employee',
+    'blog',
     #rest framework
     "rest_framework",
 ]
