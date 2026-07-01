@@ -1,16 +1,17 @@
 from myapp.models import Student
 from employee.models import Employee
-from .serializers import StudentSerializer,EmployeeSerializer
+from .serializers import StudentSerializer,EmployeeSerializer,blogSerializer,commentSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
-
+from blog.models import blog,comment
 from rest_framework import mixins
 from rest_framework import generics 
-
+import django_filters.rest_framework
 from rest_framework import viewsets
+from employee.filters import EmployeeFilter
 
 @api_view(['GET','POST'])
 def studentAPI(request):
@@ -133,3 +134,12 @@ class EmployeeViewSet(viewsets.ViewSet):
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset=Employee.objects.all()
     serializer_class=EmployeeSerializer
+    lookup_field='pk'
+    filterset_class = EmployeeFilter
+
+class blogAPI(generics.ListCreateAPIView):
+    queryset=blog.objects.all()
+    serializer_class=blogSerializer
+class commentapi(generics.ListCreateAPIView):
+    queryset=comment.objects.all()
+    serializer_class=commentSerializer
